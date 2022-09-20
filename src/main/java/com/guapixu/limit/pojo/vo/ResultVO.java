@@ -1,0 +1,45 @@
+package com.guapixu.limit.pojo.vo;
+
+import com.guapixu.limit.constant.StatusCode;
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * @author lizx
+ */
+@Data
+public class ResultVO<T> implements Serializable {
+    private Integer code;
+
+    private String msg;
+
+    private T data;
+
+    public ResultVO(){
+    }
+
+    public ResultVO(Integer code, String msg){
+        this.code = code;
+        this.msg = msg;
+        this.data = null;
+    }
+
+    public ResultVO(Integer code, String msg, T data){
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
+    public ResultVO(StatusCode statusCode){
+        this.code = statusCode.getCode();
+        this.msg = statusCode.getMsg();
+        this.data = null;
+    }
+
+    public ResultVO(StatusCode statusCode, T data){
+        this.code = statusCode.getCode();
+        this.msg = statusCode.getMsg();
+        this.data = data;
+    }
+}
